@@ -100,12 +100,11 @@ Branch Principal: main
 👥 Equipe
 
 Nome
-RM
+RM:555161
 Lucas Miranda Leite
-[Seu RM]
-[Nome do Membro 2]
-[RM do Membro 2]
-[Nome do Membro 3]
-[RM do Membro 3]
+RM:555873
+Guilherme Damasio Roselli
+RM:554681
+Gusthavo Daniel De Souza
 
 
