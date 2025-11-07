@@ -19,24 +19,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http ) throws Exception {
         http
-            .csrf().ignoringAntMatchers("/api/**", "/h2-console/**").and()
+     .csrf().ignoringAntMatchers("/api/**", "/h2-console/**").and()
             .headers().frameOptions().sameOrigin().and()
             .authorizeRequests()
-                .antMatchers("/login", "/css/**", "/js/**", "/h2-console/**").permitAll()
-                .antMatchers("/api/**").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/", true)
-                .permitAll()
-                .and()
-            .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .antMatchers("/**").permitAll();
         return http.build( );
     }
 
@@ -45,8 +31,7 @@ public class SecurityConfig {
 	        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
 	        // Configura o JdbcUserDetailsManager para usar a tabela 'usuario' e as colunas corretas
 	        users.setUsersByUsernameQuery("select username, password, true from usuario where username = ?");
-	        users.setAuthoritiesByUsernameQuery("select username, role from usuario where username = ?");
-	        return users;
+	        users.setAuthoritiesByUsernameQuery("select username, role from usuario where username = ?");     return users;
 	    }
 
     // NOVO MÉTODO: Define o codificador de senha como NoOp (sem criptografia)
