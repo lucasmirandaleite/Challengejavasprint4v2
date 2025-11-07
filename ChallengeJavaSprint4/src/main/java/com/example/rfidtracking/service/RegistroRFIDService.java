@@ -57,9 +57,7 @@ public class RegistroRFIDService {
         // DataHora should ideally be set by the DTO or based on business logic, setting to now() for simplicity
         entity.setDataHora(dto.getDataHora() != null ? dto.getDataHora() : LocalDateTime.now());
 
-        if (dto.getMotoId() == null) {
-            throw new IllegalArgumentException("ID da Moto não pode ser nulo para criar um Registro RFID.");
-        }
+
         Moto moto = motoRepository.findById(dto.getMotoId())
                 .orElseThrow(() -> new EntityNotFoundException("Moto não encontrada com ID: " + dto.getMotoId()));
         entity.setMoto(moto);

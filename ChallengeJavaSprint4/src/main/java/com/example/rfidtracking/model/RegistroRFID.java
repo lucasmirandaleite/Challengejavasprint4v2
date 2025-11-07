@@ -17,7 +17,7 @@ public class RegistroRFID {
     private LocalDateTime dataHora;
 
     @ManyToOne
-    @JoinColumn(name = "moto_id")
+    @JoinColumn(name = "moto_id", nullable = false)
     private Moto moto;
 
     public Long getId() { return id; }

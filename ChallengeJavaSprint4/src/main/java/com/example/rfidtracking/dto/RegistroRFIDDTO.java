@@ -2,6 +2,7 @@ package com.example.rfidtracking.dto;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime; // Import LocalDateTime
+import javax.validation.constraints.NotNull;
 
 public class RegistroRFIDDTO {
     private Long id;
@@ -11,6 +12,7 @@ public class RegistroRFIDDTO {
 
     private LocalDateTime dataHora; // Added dataHora field
 
+    @NotNull(message = "A Moto deve ser selecionada.")
     private Long motoId;
 
     // Getters and Setters
