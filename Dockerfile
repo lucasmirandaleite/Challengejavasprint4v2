@@ -5,7 +5,8 @@ COPY ChallengeJavaSprint4/pom.xml .
 COPY ChallengeJavaSprint4/src ./src
 RUN mvn clean package -DskipTests
 
-# Run StagFROM openjdk:17-jdk-slimdk-slim
+# Run Stage
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/project-sprint4-1.0.0.jar app.jar
 EXPOSE 8080
