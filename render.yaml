@@ -3,7 +3,7 @@ services:
     name: rfid-tracking-app
     env: java
     rootDir: ChallengeJavaSprint4
-    buildCommand: "mvn clean package -DskipTests"
+    buildCommand: "mvn clean package -DskipTests -Dspring.datasource.url=jdbc:postgresql://localhost/postgres"
     startCommand: "java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/project-sprint4-1.0.0.jar"
     envVars:
       - key: DATABASE_URL
