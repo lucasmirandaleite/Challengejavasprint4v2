@@ -19,8 +19,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http ) throws Exception {
         http
-            .authorizeRequests( )
-                .antMatchers("/login", "/css/**", "/js/**").permitAll()
+            .csrf().ignoringAntMatchers("/api/**", "/h2-console/**").and()
+            .headers().frameOptions().sameOrigin().and()
+            .authorizeRequests()
+                .antMatchers("/login", "/css/**", "/js/**", "/h2-console/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()

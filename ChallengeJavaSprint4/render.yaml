@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: rfid-tracking-app
+    env: java
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/project-sprint4-1.0.0.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 11
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rfid-tracking-db
+          property: connectionString
+    autoDeploy: true
+
+databases:
+  - name: rfid-tracking-db
+    databaseName: rfid_tracking
+    user: rfid_user
